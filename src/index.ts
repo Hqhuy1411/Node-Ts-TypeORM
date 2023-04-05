@@ -1,10 +1,20 @@
-import express, {Express , Request, Response} from 'express'
-const app : Express = express()
-const port = 3000
-app.use('/' ,(req : Request,res :Response)=>{
-    res.send("Hello ahihi")
-})
+import app from './app'
+import { AppDataSource } from './database/data-souce';
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-  })
+const PORT = 3000
+
+
+
+
+
+
+
+
+AppDataSource.initialize().then(async()=>{
+    console.log("Database connection success")
+}).catch((err)=>{
+    console.log(err)
+})
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
