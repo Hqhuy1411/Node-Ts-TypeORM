@@ -5,6 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.ts",
+    "typeorm": "typeorm-ts-node-commonjs -d src/database/data-source.ts",
+    "migration:show": "yarn typeorm migration:show",
+    "migration:create": "node scripts/migration-create.js",
+    "migration:run": "yarn typeorm migration:run",
+    "migration:revert": "yarn typeorm migration:revert",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +25,7 @@
     "typeorm": "^0.3.12"
   },
   "devDependencies": {
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.3",
+    "yargs": "^17.7.1"
   }
 }

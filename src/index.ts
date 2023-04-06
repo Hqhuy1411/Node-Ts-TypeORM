@@ -1,5 +1,5 @@
 import app from './app'
-import { AppDataSource } from './database/data-souce';
+import { AppDataSource } from './database/data-source';
 
 const PORT = 3000
 
