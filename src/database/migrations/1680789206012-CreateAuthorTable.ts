@@ -1,3 +1,4 @@
+import { DbTable } from "@/constants/DbTable";
 import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
 export class CreateAuthorTable1680789206012 implements MigrationInterface {
@@ -5,7 +6,7 @@ export class CreateAuthorTable1680789206012 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
           new Table({
-            name: "authors",
+            name: DbTable.AUTHORS,
             columns: [
               {
                 name: "id",
@@ -57,6 +58,6 @@ export class CreateAuthorTable1680789206012 implements MigrationInterface {
       }
     
       public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("authors");
+        await queryRunner.dropTable(DbTable.AUTHORS);
       }
     }
