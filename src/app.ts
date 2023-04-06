@@ -1,6 +1,8 @@
-import express, {Express , Request, Response} from 'express'
+import express, {Express , Request, Response,NextFunction} from 'express'
 import bodyParser from 'body-parser'
 import {routers} from './routes/index.router'
+import { EntityNotFoundError } from 'typeorm'
+import { ResponseUtil } from './utils/Response'
 const app : Express = express()
 
 
@@ -18,6 +20,17 @@ app.use("*", (req: Request, res: Response) => {
       message: "Invalid route",
     });
   });
-  
 
-  export default app
+  
+  // Middleware function to handler Error
+app.use((err : any,req:Request, res:Response, next : NextFunction)=>{
+  if(err instanceof EntityNotFoundError){
+    return ResponseUtil.sendErrror(res,"Item/page you are looking for does not exist", 404,null);
+  }
+  return res.status(500).json({
+    success : false,
+    massage : "Something went wrong"
+  })
+})
+  
+export default app

@@ -1,5 +1,5 @@
 import {DataSource} from 'typeorm'
-import { Author } from './entities/authors'
+import { Author } from "./entities/Authors";
 
 
 export const AppDataSource = new DataSource({
