@@ -1,5 +1,6 @@
 import {DataSource} from 'typeorm'
 import { Author } from "./entities/Authors";
+import { Users } from './entities/Users';
 
 
 export const AppDataSource = new DataSource({
@@ -11,7 +12,7 @@ export const AppDataSource = new DataSource({
     database: "test",
     synchronize: true,
     logging: true,
-    entities : [Author],
+    entities : [Author,Users],
     subscribers : [],
     migrations: ["src/database/migrations/*.ts"],
     

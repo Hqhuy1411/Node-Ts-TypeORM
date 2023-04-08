@@ -9,7 +9,7 @@ import { validate } from "class-validator"
 
 export class AuthorController {
 
-    async test(req: Request, res: Response) {
+    async getAll(req: Request, res: Response) {
         // const authors = await AppDataSource.getRepository(Author).find();
 
         // 
@@ -19,7 +19,7 @@ export class AuthorController {
         return ResponseUtil.sendResponse<Author[]>(res, "Success", authors, pagination)
 
     }
-    async test2(req: Request, res: Response) {
+    async get(req: Request, res: Response) {
         const { id } = req.params
         // throw new Error("some thing eleqweqwese")
 
