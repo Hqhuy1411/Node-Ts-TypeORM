@@ -13,7 +13,7 @@ export class AuthorController {
         // const authors = await AppDataSource.getRepository(Author).find();
 
         // 
-        const builder = await AppDataSource.getRepository(Author).createQueryBuilder().orderBy("id", "DESC");
+        const builder = AppDataSource.getRepository(Author).createQueryBuilder().orderBy("id", "DESC");
         const { records: authors, pagination } = await Paginator.paginate(builder, req)
 
         return ResponseUtil.sendResponse<Author[]>(res, "Success", authors, pagination)

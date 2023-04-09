@@ -1,5 +1,6 @@
 import { DbTable } from "../../constants/DbTable";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Book } from "./Books";
 
 @Entity(DbTable.AUTHORS)
 export class Author{
@@ -17,4 +18,7 @@ export class Author{
 
     @Column({nullable :true})
     image : string
+
+    @OneToMany((type) => Book, (book) => book.author)
+    books: Book[];
 }
