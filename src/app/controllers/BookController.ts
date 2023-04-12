@@ -55,19 +55,13 @@ export class BookController {
     async update(req: any, res: Response) {
         const {idBook} = req.params
         const data = req.body
-        const { idUser } = req.user
 
 
-        const repoUser = AppDataSource.manager.getRepository(Users)
+        const user =req.userA
         const repoAuthor = AppDataSource.getRepository(Author)
         const repoBook = AppDataSource.getRepository(Book)
 
-        const user = await repoUser.findOne({
-            where : {
-                id : idUser
-            },
-            relations : ['author']
-        })
+     
         const author = await repoAuthor.findOneByOrFail({id : user!.author.id})
         const book = await repoBook.findOneByOrFail({id : idBook})
 
@@ -82,18 +76,12 @@ export class BookController {
 
     async delete(req: any, res: Response) {
         const {idBook} = req.params
-        const { idUser } = req.user
 
-        const repoUser = AppDataSource.manager.getRepository(Users)
+        const user =req.userA
+        console.log(user)
         const repoAuthor = AppDataSource.getRepository(Author)
         const repoBook = AppDataSource.getRepository(Book)
 
-        const user = await repoUser.findOne({
-            where : {
-                id : idUser
-            },
-            relations : ['author']
-        })
         const author = await repoAuthor.findOneByOrFail({id : user!.author.id})
         const book = await repoBook.findOneByOrFail({id: idBook})
         
