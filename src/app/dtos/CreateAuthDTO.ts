@@ -1,5 +1,6 @@
 import { IsNotEmpty,IsString , MinLength, MaxLength, IsEmail,IsOptional } from "class-validator"
 
+
 export class CreateAuthDto{
 
     id?: number;

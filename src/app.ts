@@ -12,15 +12,13 @@ app.use(bodyParser.urlencoded({extended :true}))
 
 
 routers(app);
-app.use('/hello' ,(req : Request,res :Response)=>{
-    res.send("Hello ahihi")
-})
-app.use("*", (req: Request, res: Response) => {
-    return res.status(404).json({
-      success: false,
-      message: "Invalid route",
-    });
-  });
+
+// app.use("*", (req: Request, res: Response) => {
+//     return res.status(404).json({
+//       success: false,
+//       message: "Invalid route",
+//     });
+//   });
 
   
   // Middleware function to handler Error
