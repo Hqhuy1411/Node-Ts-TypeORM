@@ -5,19 +5,7 @@ import  express  from "express";
 const router = express.Router();
 const authcontroller = new AuthorController;
 
-/**
- * @openapi
- * /author:
- *   get:
- *     tags:
- *       - Author
- *     summary: Get all author
- *     description: Test swagger
- *     responses:
- *       '200':
- *         description: App is running
- */
-router.get('/' ,ErrorHandler.catchErrors(authcontroller.getAll));
+router.get('/' ,authcontroller.getAll);
 /**
  * @openapi
  * /author/{id}:

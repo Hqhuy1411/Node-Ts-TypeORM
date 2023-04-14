@@ -9,13 +9,12 @@ import { validate } from "class-validator"
 
 export class AuthorController {
 
-    async getAll(req: Request, res: Response) {
+    async getAll(req: Request, res: Response) :Promise<Response>{
         // const authors = await AppDataSource.getRepository(Author).find();
 
         // 
         const builder = AppDataSource.getRepository(Author).createQueryBuilder().orderBy("id", "DESC");
         const { records: authors, pagination } = await Paginator.paginate(builder, req)
-
         return ResponseUtil.sendResponse<Author[]>(res, "Success", authors, pagination)
 
     }

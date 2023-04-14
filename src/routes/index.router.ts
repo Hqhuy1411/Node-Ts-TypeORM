@@ -17,7 +17,7 @@ export function routers(app){
  *       '200':
  *         description: App is running
  */
-    app.use('/hello' ,(req : Request,res :Response)=>{
+    app.use('/hello' , (req : Request,res :Response)=>{
         res.sendStatus(200)
     })
     app.use('/author', authorRouter)
